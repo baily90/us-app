@@ -1,0 +1,201 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--header-height);
+  padding: 0 38px;
+  border-bottom: 1px solid var(--el-border-color);
+  .header-left {
+    width: 170px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      color: #ffffff;
+    }
+    .icon-logo {
+      width: 14px;
+      height: 19px;
+    }
+    .slogan {
+      margin-top: 2px;
+      font-weight: 300;
+      font-size: 10px;
+      color: #cecece;
+    }
+  }
+  .body {
+    position: absolute;
+    left: 0;
+    width: 60%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #00ffae;
+  }
+  .header-right {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    margin-top: -16px;
+  }
+}
+
+.container-info {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  height: 150px;
+  padding-right: 30%;
+  border-radius: 10px;
+  background: url('@renderer/assets/images/icon_device.png') no-repeat center right;
+  background-size: 107px 107px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fdfdfd;
+  white-space: pre-line;
+
+  &.success {
+    color: #3679ff;
+  }
+  &.error {
+    color: red;
+  }
+}
+.container-example {
+  position: relative;
+  margin: 10px 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height) - 40px - 150px - 100px - 20px);
+  border-radius: 10px;
+  overflow: hidden;
+
+  .example-gif {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .example-image {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #d6d6e8;
+  }
+}
+.container-indicator {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 67px;
+  height: 75px;
+  background: url('@renderer/assets/images/icon_arrow.png') no-repeat center center;
+  background-size: cover;
+}
+
+.up {
+  animation: upper 1.5s ease infinite;
+}
+.down {
+  bottom: 30%;
+  transform: rotate(-180deg);
+  transform-origin: center;
+  animation: down 1.5s ease infinite;
+}
+.left {
+  right: 10%;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  animation: left 1.5s ease infinite;
+}
+.right {
+  right: 30%;
+  transform: rotate(90deg);
+  transform-origin: center;
+  animation: right 1.5s ease infinite;
+}
+
+@keyframes upper {
+  0% {
+    opacity: 0;
+    bottom: 10%;
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    bottom: 30%;
+  }
+}
+@keyframes down {
+  0% {
+    opacity: 0;
+    bottom: 30%;
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    bottom: 10%;
+  }
+}
+@keyframes left {
+  0% {
+    opacity: 0;
+    right: 10%;
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    right: 30%;
+  }
+}
+@keyframes right {
+  0% {
+    opacity: 0;
+    right: 30%;
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    right: 10%;
+  }
+}

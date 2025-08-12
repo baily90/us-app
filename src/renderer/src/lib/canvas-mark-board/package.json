@@ -1,0 +1,50 @@
+{
+  "name": "senz-canvas",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.esm.js",
+  "unpkg": "./dist/index.umd.js",
+  "author": "senz",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "dev": "./index.ts",
+      "import": {
+        "default": "./dist/index.esm.js"
+      },
+      "require": {
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitee.com/stupidKid-X/senz-canvas-mark-board.git"
+  },
+  "homepage": "https://gitee.com/stupidKid-X/senz-canvas-mark-board",
+  "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production rollup -c"
+  },
+  "keywords": [
+    "canvas",
+    "canvas-mark",
+    "mark",
+    "board",
+    "react",
+    "vue",
+    "vue-mark",
+    "mark-board",
+    "mark-tool",
+    "img-mark",
+    "drawing",
+    "rect",
+    "polygon",
+    "line",
+    "typescript"
+  ]
+}
