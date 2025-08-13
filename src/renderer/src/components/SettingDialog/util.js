@@ -3,7 +3,7 @@ export const getInitialData = (data) => {
     initial_ultrasound_frame_x = 0,
     initial_ultrasound_frame_y = 0,
     initial_ultrasound_frame_width = 0,
-    initial_ultrasound_frame_height = 0,
+    initial_ultrasound_frame_height = 0
   } = data
   if (initial_ultrasound_frame_width && initial_ultrasound_frame_height) {
     return [
@@ -12,11 +12,11 @@ export const getInitialData = (data) => {
           [initial_ultrasound_frame_x, initial_ultrasound_frame_y],
           [
             initial_ultrasound_frame_x + initial_ultrasound_frame_width,
-            initial_ultrasound_frame_y + initial_ultrasound_frame_height,
-          ],
+            initial_ultrasound_frame_y + initial_ultrasound_frame_height
+          ]
         ],
-        type: 1,
-      },
+        type: 1
+      }
     ]
   }
   return null
@@ -36,10 +36,14 @@ export const transformToCanvas = (type, data) => {
     position_frame_y = 0,
     position_frame_width = 0,
     position_frame_height = 0,
+    imt_frame_x = 0,
+    imt_frame_y = 0,
+    imt_frame_width = 0,
+    imt_frame_height = 0,
     initial_ultrasound_frame_x = 0,
     initial_ultrasound_frame_y = 0,
     initial_ultrasound_frame_width = 0,
-    initial_ultrasound_frame_height = 0,
+    initial_ultrasound_frame_height = 0
   } = data
   if (type === 'ultrasound') {
     if (ultrasound_frame_width && ultrasound_frame_height) {
@@ -49,11 +53,11 @@ export const transformToCanvas = (type, data) => {
             [ultrasound_frame_x, ultrasound_frame_y],
             [
               ultrasound_frame_x + ultrasound_frame_width,
-              ultrasound_frame_y + ultrasound_frame_height,
-            ],
+              ultrasound_frame_y + ultrasound_frame_height
+            ]
           ],
-          type: 1,
-        },
+          type: 1
+        }
       ]
     }
   } else if (type === 'position') {
@@ -62,10 +66,10 @@ export const transformToCanvas = (type, data) => {
         {
           coor: [
             [position_frame_x, position_frame_y],
-            [position_frame_x + position_frame_width, position_frame_y + position_frame_height],
+            [position_frame_x + position_frame_width, position_frame_y + position_frame_height]
           ],
-          type: 1,
-        },
+          type: 1
+        }
       ]
     }
   } else if (type === 'patient') {
@@ -76,11 +80,23 @@ export const transformToCanvas = (type, data) => {
             [patient_info_frame_x, patient_info_frame_y],
             [
               patient_info_frame_x + patient_info_frame_width,
-              patient_info_frame_y + patient_info_frame_height,
-            ],
+              patient_info_frame_y + patient_info_frame_height
+            ]
           ],
-          type: 1,
-        },
+          type: 1
+        }
+      ]
+    }
+  } else if (type === 'imt') {
+    if (imt_frame_width && imt_frame_height) {
+      return [
+        {
+          coor: [
+            [imt_frame_x, imt_frame_y],
+            [imt_frame_x + imt_frame_width, imt_frame_y + imt_frame_height]
+          ],
+          type: 1
+        }
       ]
     }
   }
@@ -99,28 +115,35 @@ export const transformToData = (type, data) => {
       ultrasound_frame_x: x,
       ultrasound_frame_y: y,
       ultrasound_frame_width: width,
-      ultrasound_frame_height: height,
+      ultrasound_frame_height: height
     }
   } else if (type === 'position') {
     return {
       position_frame_x: x,
       position_frame_y: y,
       position_frame_width: width,
-      position_frame_height: height,
+      position_frame_height: height
     }
   } else if (type === 'patient') {
     return {
       patient_info_frame_x: x,
       patient_info_frame_y: y,
       patient_info_frame_width: width,
-      patient_info_frame_height: height,
+      patient_info_frame_height: height
+    }
+  } else if (type === 'imt') {
+    return {
+      imt_frame_x: x,
+      imt_frame_y: y,
+      imt_frame_width: width,
+      imt_frame_height: height
     }
   } else if (type === 'initial') {
     return {
       initail_frame_x: x,
       initail_frame_y: y,
       initail_frame_width: width,
-      initail_frame_height: height,
+      initail_frame_height: height
     }
   }
 }
@@ -135,6 +158,6 @@ export const resetToInitial = (data) => {
     initail_frame_x: x,
     initail_frame_y: y,
     initail_frame_width: width,
-    initail_frame_height: height,
+    initail_frame_height: height
   }
 }
