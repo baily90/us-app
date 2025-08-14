@@ -1,9 +1,9 @@
 <template>
   <div class="container-progress">
-    <div class='progress-item' :class="{ 'ed': item.status === 2, 'ing': item.status === 1 }" v-for="item in progress"
-      :key="item">
-      <Icon v-if="item.status === 2" icon="ep:success-filled" class="icon text-14px" />
-      <Icon v-else icon="ic:baseline-radio-button-unchecked" class="icon text-14px" />
+    <div v-for="item in progress" :key="item" class="progress-item"
+      :class="{ ed: item.status === 2, ing: item.status === 1 }">
+      <Icon v-if="item.status === 2" icon="ep:success-filled" class="icon text-16px" />
+      <Icon v-else icon="ic:baseline-radio-button-unchecked" class="icon text-16px" />
       {{ bodySectionMap[item.section_id] }}
     </div>
   </div>
@@ -14,8 +14,8 @@ import { bodySectionMap } from '@renderer/constants'
 defineProps({
   progress: {
     type: Array,
-    default: () => ([])
-  },
+    default: () => []
+  }
 })
 </script>
 
@@ -31,7 +31,7 @@ defineProps({
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    width: 130px;
     height: 100%;
     padding-top: 20px;
     flex-shrink: 0;
@@ -48,24 +48,23 @@ defineProps({
     }
 
     &.ed {
-      color: #00FFAE;
+      color: #00ffae;
     }
 
     &.ing {
       color: #fff;
 
       .icon {
-        color: #00FFAE;
+        color: #00ffae;
       }
-
     }
 
     &:not(:first-child)::before {
       content: '';
       position: absolute;
       top: 25px;
-      left: 0;
-      width: calc(50% - 10px);
+      left: 1px;
+      width: calc(50% - 12px);
       height: 1px;
       border-top: 1px dashed var(--el-border-color);
     }
@@ -74,12 +73,11 @@ defineProps({
       content: '';
       position: absolute;
       top: 25px;
-      right: 0;
-      width: calc(50% - 1px);
+      right: 1px;
+      width: calc(50% - 8px);
       height: 1px;
       border-top: 1px dashed var(--el-border-color);
     }
-
   }
 }
 </style>

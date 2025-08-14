@@ -3,11 +3,11 @@
     border="1px solid [var(--el-border-color)]">
     <canvas id="roi-box" class="roi-box w-full h-60vh"></canvas>
     <template #footer>
-      <el-button type="primary" @click="onResetHandle" v-throttle :auto-insert-space="true" v-if="isResetButtonVisible"
-        :loading="isResetLoading">重置初始值</el-button>
-      <el-button type="primary" @click="onSubmitHandle" v-throttle :auto-insert-space="true"
-        :loading="isSettingLoading">确定</el-button>
-      <el-button @click="onCloseHandle" v-throttle :auto-insert-space="true">关闭</el-button>
+      <el-button v-if="isResetButtonVisible" v-throttle type="primary" :auto-insert-space="true"
+        :loading="isResetLoading" @click="onResetHandle">重置初始值</el-button>
+      <el-button v-throttle type="primary" :auto-insert-space="true" :loading="isSettingLoading"
+        @click="onSubmitHandle">确定</el-button>
+      <el-button v-throttle :auto-insert-space="true" @click="onCloseHandle">关闭</el-button>
     </template>
   </el-dialog>
 </template>
@@ -28,17 +28,16 @@ const onResetHandle = async () => {
   try {
     isResetLoading.value = true
     await ElMessageBox.confirm('确定要重置为初始值吗？', '提示', {
-      type: 'warning',
+      type: 'warning'
     })
     const requestBody = transformToData('ultrasound', initialData.value)
-    console.log(requestBody);
+    console.log(requestBody)
     const { status } = await setCoordinates(requestBody)
     if (status === 0) {
       onCloseHandle()
       ElMessage.success('重置成功')
     }
   } catch (error) {
-
   } finally {
     isResetLoading.value = false
   }
@@ -60,15 +59,13 @@ const onSubmitHandle = async () => {
       ...data,
       ...extraData
     }
-    console.log(requestBody);
+    console.log(requestBody)
     const { status } = await setCoordinates(requestBody)
     if (status === 0) {
       onCloseHandle()
       ElMessage.success('设置成功')
     }
-
   } catch (error) {
-
   } finally {
     isSettingLoading.value = false
   }
@@ -84,7 +81,7 @@ const initCoordinate = async () => {
     initialData.value = getInitialData(data)
     const canvasData = transformToCanvas(type.value, data)
     setTimeout(() => {
-      const instance = new CanvasSelect("#roi-box")
+      const instance = new CanvasSelect('#roi-box')
       instance.setImage(data.frame_base64)
       instance.on('updated', (result) => {
         label.value = result
@@ -105,7 +102,6 @@ const initCoordinate = async () => {
     console.log(error)
   }
 }
-
 
 const open = async (val) => {
   type.value = val

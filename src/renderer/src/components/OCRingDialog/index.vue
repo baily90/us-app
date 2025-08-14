@@ -1,19 +1,13 @@
 <template>
   <Transition>
-    <div class="ocring-container" v-if="visible">
-      <div class="btn position" @click="settingDialog.open('position')"></div>
-      <div class="btn patient" @click="settingDialog.open('patient')"></div>
-      <img src="@renderer/assets/images/bg_ocring.png" alt="">
-      <SettingDialog ref="settingDialog" />
+    <div v-if="visible" class="ocring-container">
+      <img src="@renderer/assets/images/bg_ocring.png" alt="" />
     </div>
   </Transition>
 </template>
 
 <script setup>
-import SettingDialog from '@renderer/components/SettingDialog/index.vue'
-
 const visible = ref(true)
-const settingDialog = ref(null)
 
 const open = () => {
   visible.value = true
@@ -34,22 +28,6 @@ defineExpose({ open, close })
   height: 100vh;
   z-index: 1;
   opacity: 1;
-}
-
-.btn {
-  position: absolute;
-  top: 0;
-  width: 50px;
-  height: 5%;
-  z-index: 1;
-
-  &.position {
-    left: 0;
-  }
-
-  &.patient {
-    right: 0;
-  }
 }
 
 img {
